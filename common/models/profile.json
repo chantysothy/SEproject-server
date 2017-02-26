@@ -1,0 +1,162 @@
+{
+  "name": "Profile",
+  "base": "User",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true,
+    "emailVerificationRequired": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "required": false,
+      "validateUpsert": true,
+      "silenceWarnings": false
+    }
+  },
+  "hidden": [],
+  "protected": [
+    "email",
+    "emailVerified",
+    "realm",
+    "credentials",
+    "challenges",
+    "createdAt",
+    "updatedAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "guid"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "studentCode": {
+      "type": "string"
+    },
+    "faculty": {
+      "type": "string"
+    },
+    "avatarUrl": {
+      "type": "string"
+    },
+    "emailVerified": {
+      "type": "boolean",
+      "default": false
+    },
+    "created": false,
+    "lastUpdated": false,
+    "username": {
+      "type": "string",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "roles": {
+      "type": "hasMany",
+      "model": "Role",
+      "foreignKey": "principalId",
+      "through": "RoleMapping"
+    },
+    "badges": {
+      "type": "hasMany",
+      "model": "Badge",
+      "foreignKey": "profileId",
+      "through": "ProfilesBadges"
+    },
+    "wishListCourse": {
+      "type": "hasMany",
+      "model": "Course",
+      "foreignKey": "profileId",
+      "through": "WishList",
+      "keyThrough": "courseId"
+    },
+    "enrollCourses": {
+      "type": "hasMany",
+      "model": "Course",
+      "foreignKey": "profileId",
+      "through": "EnrollCourse",
+      "keyThrough": "courseId"
+    },
+    "certificates": {
+      "type": "hasMany",
+      "model": "Certificate",
+      "foreignKey": "profileId",
+      "through": "ProfileCertificate"
+    },
+    "accessTokens": {
+      "type": "hasMany",
+      "model": "AuthToken",
+      "foreignKey": "userId"
+    },
+    "identities": {
+      "type": "hasMany",
+      "model": "ProfileIdentity",
+      "foreignKey": "userId"
+    },
+    "credentials": {
+      "type": "hasMany",
+      "model": "ProfileCredential",
+      "foreignKey": "userId"
+    },
+    "videoProgresses": {
+      "type": "hasMany",
+      "model": "VideoProgress",
+      "foreignKey": "profileId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "replacePassword"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "findOne"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "login"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "create"
+    }
+  ],
+  "methods": {}
+}

@@ -1,0 +1,55 @@
+{
+  "facebook-login": {
+    "provider": "facebook",
+    "module": "passport-facebook",
+    "profileFields": [
+      "gender",
+      "link",
+      "locale",
+      "name",
+      "timezone",
+      "verified",
+      "email",
+      "updated_time"
+    ],
+    "clientID": "168792076926076",
+    "clientSecret": "87c6e09b2d724dfe4449dc6e2754c111",
+    "callbackURL": "/auth/facebook/callback",
+    "authPath": "/auth/facebook",
+    "callbackPath": "/auth/facebook/callback",
+    "successRedirect": "/auth/facebook/after-callback",
+    "failureRedirect": "/#/login",
+    "scope": [
+      "email"
+    ],
+    "failureFlash": true,
+    "setAccessToken": true
+  },
+  "facebook-link": {
+    "provider": "facebook",
+    "module": "passport-facebook",
+    "clientID": "168792076926076",
+    "profileFields": [
+      "gender",
+      "link",
+      "locale",
+      "name",
+      "timezone",
+      "verified",
+      "email",
+      "updated_time"
+    ],
+    "clientSecret": "87c6e09b2d724dfe4449dc6e2754c111",
+    "callbackURL": "/link/facebook/callback",
+    "authPath": "/link/facebook",
+    "callbackPath": "/link/facebook/callback",
+    "successRedirect": "/#/auth/callback",
+    "failureRedirect": "/#/login",
+    "scope": [
+      "email",
+      "user_likes"
+    ],
+    "link": true,
+    "failureFlash": true
+  }
+}

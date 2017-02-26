@@ -1,0 +1,125 @@
+{
+  "name": "Course",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "required": false,
+      "validateUpsert": true,
+      "silenceWarnings": false
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "guid"
+    },
+    "name_en": {
+      "type": "string",
+      "required": true
+    },
+    "name_th": {
+      "type": "string",
+      "required": true
+    },
+    "description_en": {
+      "type": "string"
+    },
+    "description_th": {
+      "type": "string"
+    },
+    "imageCoverUrl": {
+      "type": "string"
+    },
+    "imageThumbnailUrl": {
+      "type": "string"
+    },
+    "passTestPercent": {
+      "type": "number",
+      "default": 100
+    },
+    "status": {
+      "type": "string",
+      "default": "inactive"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "wishListOwner": {
+      "type": "hasMany",
+      "model": "Profile",
+      "foreignKey": "courseId",
+      "through": "WishList",
+      "keyThrough": "profileId"
+    },
+    "enrollUser": {
+      "type": "hasMany",
+      "model": "Profile",
+      "foreignKey": "courseId",
+      "through": "EnrollCourse",
+      "keyThrough": "profileId"
+    },
+    "certificates": {
+      "type": "hasMany",
+      "model": "Certificate",
+      "foreignKey": "certificateId"
+    },
+    "activeCertificate": {
+      "type": "hasOne",
+      "model": "Certificate",
+      "foreignKey": "certificateId"
+    },
+    "seminar": {
+      "type": "belongsTo",
+      "model": "Seminar",
+      "foreignKey": "seminarId"
+    },
+    "questions": {
+      "type": "hasMany",
+      "model": "Question",
+      "foreignKey": "courseId"
+    },
+    "chapters": {
+      "type": "hasMany",
+      "model": "Chapter",
+      "foreignKey": "courseId"
+    },
+    "category": {
+      "type": "belongsTo",
+      "model": "Category",
+      "foreignKey": "categoryId"
+    },
+    "instructors": {
+      "type": "hasMany",
+      "model": "Instructor",
+      "foreignKey": "courseId",
+      "through": "InstructorCourse",
+      "keyThrough": "instructorId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

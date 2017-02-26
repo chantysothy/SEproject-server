@@ -1,0 +1,74 @@
+{
+  "name": "Category",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "required": false,
+      "validateUpsert": true,
+      "silenceWarnings": false
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "guid"
+    },
+    "name_en": {
+      "type": "string",
+      "required": true
+    },
+    "name_th": {
+      "type": "string",
+      "required": true
+    },
+    "imageCoverUrl": {
+      "type": "string"
+    },
+    "imageThumbnailUrl": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "default": "inactive"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "courses": {
+      "type": "hasMany",
+      "model": "Course",
+      "foreignKey": "categoryId"
+    },
+    "seminars": {
+      "type": "hasMany",
+      "model": "Seminar",
+      "foreignKey": "categoryId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

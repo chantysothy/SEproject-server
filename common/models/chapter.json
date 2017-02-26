@@ -1,0 +1,90 @@
+{
+  "name": "Chapter",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "required": false,
+      "validateUpsert": true,
+      "silenceWarnings": false
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "guid"
+    },
+    "name_en": {
+      "type": "string",
+      "required": true
+    },
+    "name_th": {
+      "type": "string",
+      "required": true
+    },
+    "description_en": {
+      "type": "string"
+    },
+    "description_th": {
+      "type": "string"
+    },
+    "imageCoverUrl": {
+      "type": "string"
+    },
+    "imageThumbnailUrl": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "default": "active"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "prev": {
+      "type": "hasOne",
+      "model": "Chapter",
+      "foreignKey": "prev"
+    },
+    "next": {
+      "type": "hasOne",
+      "model": "Chapter",
+      "foreignKey": "next"
+    },
+    "course": {
+      "type": "belongsTo",
+      "model": "Course",
+      "foreignKey": "courseId"
+    },
+    "videos": {
+      "type": "hasMany",
+      "model": "Video",
+      "foreignKey": "chapterId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

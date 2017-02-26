@@ -1,0 +1,140 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models",
+      "../node_modules/loopback-component-passport/lib/models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../node_modules/loopback-ds-timestamp-mixin",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "Email": {
+    "dataSource": "gmailDS"
+  },
+  "AuthToken": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ProfileCredential": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ProfileIdentity": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ACL": {
+    "dataSource": "mysqlDS",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "Role": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "Seminar": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "Profile": {
+    "dataSource": "mysqlDS",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": true
+    }
+  },
+  "Badge": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ProfilesBadges": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "Course": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "WishList": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "EnrollCourse": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "Certificate": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "ProfileCertificate": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "Category": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "Question": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "Choice": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "Assessment": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "AssessmentQuestion": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "AssessmentResult": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "Chapter": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "Video": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "CourseProgress": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "Container": {
+    "dataSource": "storage",
+    "public": true
+  },
+  "Instructor": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "VideoProgress": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "AssessmentDetails": {
+    "dataSource": "mysqlDS",
+    "public": true
+  },
+  "InstructorCourse": {
+    "dataSource": "mysqlDS",
+    "public": true
+  }
+}

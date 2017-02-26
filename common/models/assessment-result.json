@@ -1,0 +1,65 @@
+{
+  "name": "AssessmentResult",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "required": false,
+      "validateUpsert": true,
+      "silenceWarnings": false
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "guid"
+    },
+    "type": {
+      "type": "string"
+    },
+    "dateTaken": {
+      "type": "date"
+    },
+    "result": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "assessment": {
+      "type": "belongsTo",
+      "model": "Assessment",
+      "foreignKey": "assessmentId"
+    },
+    "assessmentDetails": {
+      "type": "hasMany",
+      "model": "AssessmentDetails",
+      "foreignKey": "assessmentResultId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

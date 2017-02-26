@@ -1,0 +1,3 @@
+[submodule "client"]
+	path = client
+	url = https://prutya_kunaroob@bitbucket.org/prutya_kunaroob/cmmu-admin.git

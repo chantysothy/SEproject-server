@@ -1,0 +1,90 @@
+{
+  "name": "Seminar",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "required": false,
+      "validateUpsert": true,
+      "silenceWarnings": false
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "guid"
+    },
+    "description_en": {
+      "type": "string"
+    },
+    "description_th": {
+      "type": "string"
+    },
+    "name_en": {
+      "type": "string",
+      "required": true
+    },
+    "name_th": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "date",
+      "mysql": {
+        "dataType": "datetime",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "Y"
+      }
+    },
+    "imageCoverUrl": {
+      "type": "string"
+    },
+    "imageThumbnailUrl": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "default": "inactive"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "course": {
+      "type": "hasOne",
+      "model": "Course",
+      "foreignKey": "seminarId"
+    },
+    "category": {
+      "type": "belongsTo",
+      "model": "Category",
+      "foreignKey": "categoryId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

@@ -1,0 +1,46 @@
+{
+  "name": "AssessmentDetails",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": {
+      "required": false,
+      "validateUpsert": true,
+      "silenceWarnings": false
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "guid"
+    },
+    "score": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {
+    "assessmentResult": {
+      "type": "belongsTo",
+      "model": "AssessmentResult",
+      "foreignKey": "assessmentResultId"
+    },
+    "question": {
+      "type": "belongsTo",
+      "model": "Question",
+      "foreignKey": "questionId"
+    },
+    "choice": {
+      "type": "belongsTo",
+      "model": "Choice",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

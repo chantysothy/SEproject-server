@@ -1,0 +1,40 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mysqlDS": {
+    "host": "${MYSQL_HOST}",
+    "port": 3306,
+    "url": "",
+    "database": "${MYSQL_DATABASE}",
+    "password": "${MYSQL_PASSWORD}",
+    "name": "mysqlDS",
+    "user": "${MYSQL_USER}",
+    "connector": "mysql",
+    "collation": "utf8_unicode_ci"
+  },
+  "gmailDS": {
+    "name": "gmailDS",
+    "defaultForType": "mail",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "SMTP",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "auth": {
+          "user": "noreply.cmmu@gmail.com",
+          "pass": "RlEy9v5tn4"
+        }
+      }
+    ]
+  },
+  "storage": {
+    "name": "storage",
+    "provider": "filesystem",
+    "root": "./server/storage",
+    "connector": "loopback-component-storage"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "restApiRoot": "/api",
+  "host": "http://www.cmmu.com",
+  "port": 3000,
+  "https-port": 3001,
+  "cookieSecret": "246bace2-38cb-4138-85d9-0ae8160b07c8",
+  "url": "http://www.cmmu.com/",
+  "logoutSessionsOnSensitiveChanges": true,
+  "injectOptionsFromRemoteContext": true,
+  "swagger": {
+    "protocol": "https"
+  },
+  "remoting": {
+    "context": false,
+    "rest": {
+      "normalizeHttpPath": false,
+      "xml": false
+    },
+    "json": {
+      "strict": false,
+      "limit": "2mb"
+    },
+    "urlencoded": {
+      "extended": true,
+      "limit": "1mb"
+    },
+    "cors": false,
+    "handleErrors": false
+  },
+  "legacyExplorer": false
+}
